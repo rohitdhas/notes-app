@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { searchFor } from "../helpers/searchHandler";
-import { NoteCard } from "./home";
 import { SearchPage } from "../styles/searchPageStyles";
+import { useAuth } from "../firebase/userAuth";
+import { useParams } from "react-router";
+import { NoteCard } from "./home";
 
 export default function Search() {
   const [searchResults, setSearchResults] = useState([]);
   const params = useParams();
+  const { userdata } = useAuth();
 
   useEffect(() => {
     const query = params.query;
-    searchFor(query, setSearchResults);
-  }, []);
+    const uid = userdata.uid;
+
+    if (uid) {
+      searchFor(query, uid, setSearchResults);
+    }
+  }, [params.query, userdata.uid]);
 
   return (
     <SearchPage>

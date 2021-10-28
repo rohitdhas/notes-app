@@ -31,6 +31,7 @@ function WhenLoggedIn() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/editor" component={Editor} />
+        <Route exact path="/editor/:id" component={Editor} />
         <Route exact path="/note/:id" component={Viewer} />
         <Route exact path="/search/:query" component={Search} />
       </Switch>

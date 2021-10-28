@@ -12,12 +12,14 @@ export const HomePage = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    gap: 20px;
+    gap: 10px;
     a {
+      margin: 10px 0;
       text-decoration: none;
       color: white;
       width: 100%;
       display: block;
+      font-weight: bold;
     }
   }
 
@@ -43,6 +45,7 @@ export const HomePage = styled.div`
   }
 
   @media (max-width: 650px) {
+    margin: 80px 10px 0;
     .notes {
       grid-template-columns: repeat(1, 1fr);
     }

@@ -49,21 +49,24 @@ export const Nav = styled.nav`
   }
 
   @media (max-width: 650px) {
-    padding: 10px 20px;
+    padding: 10px;
 
     #site_title {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
 
     form {
-      width: 40%;
+      width: 50%;
       input {
-        padding: 5px 10px;
+        padding: 5px;
+        margin: 0 5px;
+        font-size: 0.8rem;
       }
     }
 
     .user > button {
       padding: 5px;
+      margin-left: 5px;
     }
   }
 `;

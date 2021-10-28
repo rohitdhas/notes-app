@@ -31,4 +31,8 @@ export const SearchPage = styled.div`
       background-color: #2352e0;
     }
   }
+
+  @media (max-width: 600px) {
+    margin: 80px 10px 0;
+  }
 `;

@@ -1,23 +1,26 @@
 import { Nav } from "../styles/navStyles";
 import { useAuth } from "../firebase/userAuth";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import { useState } from "react";
 
 export default function Navbar() {
   const { logOut } = useAuth();
+  const history = useHistory();
   const [searchInput, setSearchInput] = useState("");
 
   function search(e) {
     e.preventDefault();
     if (searchInput) {
-      window.location = `/search/${searchInput}`;
+      history.push(`/search/${searchInput}`);
     } else return;
   }
 
   return (
     <Nav>
-      <a href="/">
+      <Link to="/">
         <div id="site_title">Notes</div>
-      </a>
+      </Link>
       <form onSubmit={(e) => search(e)}>
         <input
           type="text"

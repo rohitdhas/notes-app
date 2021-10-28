@@ -52,4 +52,18 @@ export const EditorPage = styled.div`
     border: none;
     outline: none;
   }
+
+  @media (max-width: 600px) {
+    margin: 80px 10px 0;
+
+    .topbar > button {
+      padding: 5px;
+      margin: 0 3px;
+    }
+
+    input,
+    textarea {
+      padding: 5px;
+    }
+  }
 `;

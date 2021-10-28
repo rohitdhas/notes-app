@@ -1,30 +1,36 @@
 import { ViewerPage, LoadingText } from "../styles/viewerStyles";
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
-import { getNote, deleteNote } from "../helpers/noteHandler";
+import { useEffect } from "react";
+import { useNoteHander } from "../helpers/noteHandler";
+import { Link } from "react-router-dom";
 
 export default function Viewer() {
   const params = useParams();
-  const [noteData, setNoteData] = useState({});
+  const { getNote, deleteNote, data: noteData } = useNoteHander();
 
   useEffect(() => {
     const noteId = params.id;
-    getNote(noteId, setNoteData);
+    getNote(noteId);
   }, []);
 
   return (
     <ViewerPage>
       {!noteData.title ? (
         <LoadingText>
-          <h1>Loading...</h1>
+          <p>Loading...</p>
         </LoadingText>
       ) : (
         <>
           <div className="note_title">
             <span className="title">{noteData.title}</span>
-            <span className="time">
-              Edited - {noteData.time.split(",")[0]}
-              <button onClick={() => deleteNote(params.id)}>Delete</button>
+            <span className="meta">
+              <span>Last edited - {noteData.time.split(",")[0]}</span>
+              <button id="delete_btn" onClick={() => deleteNote(params.id)}>
+                Delete
+              </button>
+              <Link to={`/editor/${params.id}`}>
+                <button id="edit_btn">Edit</button>
+              </Link>
             </span>
           </div>
           <div className="note_detail">{noteData.note}</div>
